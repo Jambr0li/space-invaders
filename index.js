@@ -1,5 +1,7 @@
 const canvas = document.querySelector('canvas');
+const scoreEl = document.querySelector('#scoreEl');
 const c = canvas.getContext('2d');
+console.log(scoreEl);
 
 canvas.width = window.innerWidth-4;
 canvas.height = window.innerHeight-4;
@@ -240,6 +242,7 @@ let game = {
     over: false,
     active: true
 }
+let score = 0
 
 for (let i = 0; i < 100; i++){
     particles.push(new Particle({
@@ -355,6 +358,9 @@ function animate(){
                             return projectile2 === projectile
                         })
                         if (invaderFound && projecticleFound){
+                            // incriment score when we hit enemy
+                            score += 100
+                            scoreEl.innerHTML = score
                             // Invader particle effect upon destruction
                             createParticles({
                                 object: invader,
