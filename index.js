@@ -111,12 +111,12 @@ class InvaderProjectile {
         this.position = position
         this.velocity = velocity
 
-        this.width = 3
+        this.width = 4
         this.height = 10
     }
 
     draw() {
-        c.fillStyle = "white"
+        c.fillStyle = "yellow"
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 
