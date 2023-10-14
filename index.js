@@ -414,6 +414,7 @@ function animate(){
 
 animate()
 
+let space_pressed = false
 addEventListener('keydown', ({key}) => {
     if (game.over) return
     switch(key) {
@@ -424,22 +425,26 @@ addEventListener('keydown', ({key}) => {
             keys.d.pressed = true
             break
         case ' ':
-            console.log("shoot");
-            projectiles.push(new Projectile({
-                position: {
-                    x: player.position.x + player.width / 2 ,
-                    y: player.position.y 
-                },
-                velocity: {
-                    x: 0,
-                    y: -11,
-                }
-            }))
+            if (!space_pressed){
+                space_pressed = true
+                console.log("shoot");
+                projectiles.push(new Projectile({
+                    position: {
+                        x: player.position.x + player.width / 2 ,
+                        y: player.position.y 
+                    },
+                    velocity: {
+                        x: 0,
+                        y: -11,
+                    }
+                }))
+            }
             break
     }
 })
 
 addEventListener('keyup', ({key}) => {
+    space_pressed = false
     switch(key) {
         case 'a':
             keys.a.pressed = false 
