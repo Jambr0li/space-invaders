@@ -3,8 +3,8 @@ const scoreEl = document.querySelector('#scoreEl');
 const c = canvas.getContext('2d');
 console.log(scoreEl);
 
-canvas.width = window.innerWidth-4;
-canvas.height = window.innerHeight-4;
+canvas.width = 1024;
+canvas.height = 576;
 
 class Player{
     constructor() {
@@ -424,6 +424,7 @@ addEventListener('keydown', ({key}) => {
             keys.d.pressed = true
             break
         case ' ':
+            console.log("shoot");
             projectiles.push(new Projectile({
                 position: {
                     x: player.position.x + player.width / 2 ,
