@@ -192,7 +192,7 @@ class Grid{
         }
 
         this.velocity = {
-            x: 4,
+            x: Math.floor(Math.random() * 3 + 4),
             y: 0
         }
 
@@ -250,21 +250,25 @@ let game = {
     active: true
 }
 let score = 0
-
-for (let i = 0; i < 100; i++){
-    particles.push(new Particle({
-        position: {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-        },
-        velocity: {
-            x: 0,
-            y: .5
-        },
-        radius: Math.random() * 3,
-      color: 'white'
-    }))
+let reset = false
+function makeStars(){
+    for (let i = 0; i < 100; i++){
+        particles.push(new Particle({
+            position: {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+            },
+            velocity: {
+                x: 0,
+                y: .5
+            },
+            radius: Math.random() * 3,
+          color: 'white'
+        }))
+    }
 }
+
+makeStars()
 
 function createParticles({object, color, fades}) {
     for (let i = 0; i < 15; i++){
@@ -349,7 +353,7 @@ function animate(){
     grids.forEach((grid, gridIndex) => {
         grid.update()
         // Spawn enemy projectiles
-        if (frames % 100 === 0 && grid.invaders.length > 0){
+        if (frames % 50 === 0 && grid.invaders.length > 0){
             grid.invaders[Math.floor(Math.random()*grid.invaders.length)].shoot(
                 invaderProjectiles
             )
@@ -416,10 +420,11 @@ function animate(){
     // spawn enemies
     
     if (frames % randomInterval === 0) {
+        console.log(frames);
+        
         grids.push(new Grid())
         randomInterval = Math.floor((Math.random() * 500) + 500)
         frames = 0;
-        console.log(randomInterval);
     }
 
 
@@ -437,6 +442,21 @@ playAgainButton.addEventListener('click', () => {
     console.log("clicked!");
     gameDiv.style.display = 'block'
     postGame.style.display = 'none'
+    player.opacity = 1
+    game.over = false
+    game.active = true
+    score = 0
+    frames = 0
+    // Get rid of everything on canvas 
+    projectiles.splice(0, projectiles.length)
+    grids.splice(0, grids.length)
+    invaderProjectiles.splice(0, invaderProjectiles.length)
+    particles.splice(0, particles.length)
+    makeStars()
+    scoreEl.innerHTML = score
+    //center the player
+    player.position.x = canvas.width / 2 - player.width / 2,
+    player.position.y = canvas.height - player.height - 20
     animate()
 })
 

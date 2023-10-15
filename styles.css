@@ -38,6 +38,8 @@ div {
     height: 576px;
     width: 1024px;
     color: white;
+    /* background-image: url("./img/space.jpg");
+    background-size: cover; */
 }
 
 .pre-game {
@@ -49,6 +51,8 @@ div {
     background-color: black;
     height: 576px;
     width: 1024px;
+    /* background-image: url("./img/space.jpg");
+    background-size: cover; */
 }
 
 .pre-game >  h1 {
