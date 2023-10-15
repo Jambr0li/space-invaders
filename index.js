@@ -1,5 +1,11 @@
 const canvas = document.querySelector('canvas');
 const scoreEl = document.querySelector('#scoreEl');
+const startButton = document.querySelector('.start-game')
+const gameDiv = document.querySelector(".game")
+const preGameDiv = document.querySelector(".pre-game")
+const postGame = document.querySelector(".post-game")
+const playAgainButton = document.querySelector(".play-again")
+
 const c = canvas.getContext('2d');
 console.log(scoreEl);
 
@@ -276,6 +282,11 @@ function createParticles({object, color, fades}) {
         }))
     }
 }
+
+function setEndScreen(){
+    gameDiv.style.display = 'none'
+    postGame.style.display = 'block'
+}
     
 function animate(){
     if (!game.active) return
@@ -319,6 +330,7 @@ function animate(){
             }, 0)
             setTimeout(() => {
                 game.active = false
+                setEndScreen()
             }, 2000)
         }
     })
@@ -412,7 +424,19 @@ function animate(){
     frames++
 }
 
-animate()
+startButton.addEventListener('click', () => {
+    console.log("clicked!");
+    preGameDiv.style.display = 'none'
+    gameDiv.style.display = 'block'
+    animate()
+})
+
+playAgainButton.addEventListener('click', () => {
+    console.log("clicked!");
+    gameDiv.style.display = 'block'
+    postGame.style.display = 'none'
+    animate()
+})
 
 let space_pressed = false
 addEventListener('keydown', ({key}) => {

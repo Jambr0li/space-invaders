@@ -23,3 +23,56 @@ body {
 div {
     position: relative;
 }
+
+.game {
+ display: none;
+}
+
+.post-game {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: black;
+    height: 576px;
+    width: 1024px;
+    color: white;
+}
+
+.pre-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: black;
+    height: 576px;
+    width: 1024px;
+}
+
+.pre-game >  h1 {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 50px;
+    margin-bottom: 50px
+}
+
+.pre-game > p {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.title {
+    margin-bottom: 50px;
+}
+
+.start-game, .play-again {
+    font-size: 30px;
+    margin-top: 30px;
+    padding: 10px 50px;
+    border-radius: 15px;
+    background-color: rgb(166, 123, 207);
+    border-color: rgb(0, 255, 255);
+}
