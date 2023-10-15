@@ -5,6 +5,7 @@ const gameDiv = document.querySelector(".game")
 const preGameDiv = document.querySelector(".pre-game")
 const postGame = document.querySelector(".post-game")
 const playAgainButton = document.querySelector(".play-again")
+const endScreenScore = document.querySelector(".end-screen-score")
 
 const c = canvas.getContext('2d');
 console.log(scoreEl);
@@ -285,7 +286,8 @@ function createParticles({object, color, fades}) {
 
 function setEndScreen(){
     gameDiv.style.display = 'none'
-    postGame.style.display = 'block'
+    endScreenScore.innerHTML = score;
+    postGame.style.display = 'flex'
 }
     
 function animate(){
